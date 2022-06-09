@@ -1,4 +1,4 @@
-async function getTemples(api){
+async function getInfo(api){
 
     const response = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/New%20York%20City%2CNY?unitGroup=us&key=DYTAUHC2SFNFEANQ79FQ7385B&contentType=json");
   //check to see if the fetch was successful
@@ -6,18 +6,31 @@ async function getTemples(api){
     // the API will send us JSON...but we have to convert the response before we can use it
     // .json() also returns a promise...so we await it as well.
         const data = await response.json();
-        console.log(data);
         fillInfo(data);
-        //output(data);
-
+        console.log(data);
         
-// Step 4: In the function, using the built-in fetch method, call this absolute URL: 'https://byui-cse.github.io/cse121b-course/week05/temples.json'. Create a variable to hold the response from your fetch. You should have the program wait on this line until it finishes.
-// Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.        
+        //output(data);
     
     }
+}
+
+function fillInfo(data) {
+  console.log(data.address);
+  let cityName = document.getElementById('city_name');
+  cityName.innerHTML = `<h2>${data.address}<h2>`;
+
+  let tempature = document.getElementById('tempature');
+  tempature.innerHTML = `<h2>${data.currentConditions.temp}<h2>`;
+
+  let weatherCondition = document.getElementById('weather_condition');
+  weatherCondition.innerHTML = `<h2>${data.currentConditions.conditions}<h2>`;
+
+  let wind = document.getElementById('wind_speed');
+  wind.innerHTML = `<h2>${data.currentConditions.windspeed}<h2>`;
+
 }
 
 let api_id = "DYTAUHC2SFNFEANQ79FQ7385B";
 
 
-getTemples(api_id);
+getInfo(api_id);
