@@ -13,20 +13,16 @@ async function getPokemon(url) {
     //Loop and print each part of the array.
     for(let i = 0; i < data.options.length; i++){
       console.log(data.options[i].name)
+      doStuff(data.options[i])
     }
 
-    //data.options.forEach(console.log("Made it!"))
-
-    //console.log(data.options[0])
-    //doStuff(data);
   }
 }
+
+//
 function doStuff(data) {
     const html = `<h2>${data.name}</h2>`;
     //Use backticks for above item to put in object info
     outputElement.innerHTML = html;
 }
 getPokemon(url);
-console.log("second: ", results);
-
-//Find fetch file that goes through each option
