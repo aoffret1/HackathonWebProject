@@ -1,7 +1,14 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("/fonts/static/OpenSans_SemiCondensed/OpenSans_SemiCondensed-Light.ttf");
+  url:("CustomFont.ttf") format("opentype"),
+  url("CustomFont.svg#OpenSans_SemiCondensed-Light.ttf") format("ttf");
+  }
 body {
   background-color: #ffffff;
   font-style: normal;
-  font-family: sans-serif, arial;
+  font-weight: bold;
+  font-family: "CustomFont", sans-serif;
 
 }
 /* BYUI icon */
@@ -50,6 +57,7 @@ and move image to 1st column */
   color: rgb(0, 0, 0);
   font-size: 18px;
   font-weight: normal;
+  font-family: "CustomFont";
 }
 .header3 {
   padding: 10px;
