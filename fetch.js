@@ -89,4 +89,10 @@ function sortBy(){
 }
 
 
+function searchFunction(){
+  //Declare variables to search table:
+  var input, filter, table, tr, td, i, txtValue;
+  
+}
+
 getJSON(url);
