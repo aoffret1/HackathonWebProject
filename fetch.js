@@ -89,7 +89,7 @@ function sortBy(){
       console.log("error");
   }
 
-  //Adds to seperate list, and prints it out
+  //Adds to seperate list, and prints it out.
   for(let i = 0; i < trainingsArray.length; i++){
     if (trainingsArray[i].category == compare_value){
       //Add to categoryList.
@@ -97,6 +97,7 @@ function sortBy(){
     }
 
   }
+  //Make the new table.
   tableCreator(categoryList);
 }
 //Resets the table
@@ -116,19 +117,7 @@ function searchFunction(){
   tr = table.getElementsByTagName("tr");  
 }
 
-// // Loop through trainings:
-// for (i = 0; i < tr.length; i++) {
-//   td = tr[i].getElementsByTagName("td")[0];
-//   if (td) {
-//     txtValue = td.textContent || td.innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       tr[i].style.display = "";
-//     } else {
-//       tr[i].style.display = "none";
-//     }
-//   }
-// }
-
+//Run the program.
 getJSON(url);
 
 
