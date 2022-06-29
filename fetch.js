@@ -41,42 +41,52 @@ function tableCreator(sections){
   element.innerHTML = htmlString;
 }
 
-//Sorts by category
-// function sortBy(){
-//   reset();
-//   let sortOut = document.getElementById('sortBy').value;
-//   switch(sortOut){
-//       case "Professional Training":
-//         categoryList = []
+//Appends elements
+let article = document.createElement('article');
+async function output(section) {
+      document.body.appendChild(sections);
+      let nameElement = document.createElement('tr');
+      nameElement.textContent = temple.templeName;
 
-//         for(let i = 0; i < data.options.length; i++){
-//           if (data.options[i].category == "Professional Training"){
-//             //Add to list
-//             categoryList
-//           }
+      article.appendChild(nameElement);
+}
+
+//Sorts by category
+function sortBy(){
+  reset();
+  let sortOut = document.getElementById('sortBy').value;
+  switch(sortOut){
+      case "Professional Training":
+
+        for(let i = 0; i < data.options.length; i++){
+          if (data.options[i].category == "Professional Training"){
+            //Add to output
+            output()
+            
+          }
       
-//         }
+        }
       
-//       case "templeNameDescending":
-//           console.log("here2");
-//           templeList.sort((a, b) => {
-//               let temple1 = a.templeName;
-//               let temple2 = b.templeName;
-//               if (temple1 < temple2){
-//                   return -1;
-//               } else if (temple1 > temple2){
-//                   return 1;
-//               } else if (temple1 = temple2){
-//                   return 0;
-//               }
-//           });
-//           console.log(templeList);
-//           output(templeList);
-//           break;
-//       default:
-//           console.log("here2");
-//   }
-// }
+      case "templeNameDescending":
+          console.log("here2");
+          templeList.sort((a, b) => {
+              let temple1 = a.templeName;
+              let temple2 = b.templeName;
+              if (temple1 < temple2){
+                  return -1;
+              } else if (temple1 > temple2){
+                  return 1;
+              } else if (temple1 = temple2){
+                  return 0;
+              }
+          });
+          console.log(templeList);
+          output(templeList);
+          break;
+      default:
+          console.log("here2");
+  }
+}
 
 
 getJSON(url);
