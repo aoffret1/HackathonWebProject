@@ -23,9 +23,6 @@ async function getJSON(url) {
 
 
 
-
-
-
 //Creates each row for table
 function sectionTemplate(section){
   return `<tr><td> <a href="${section.link}">${section.name}</a> 
@@ -42,51 +39,68 @@ function tableCreator(sections){
 }
 
 //Appends elements
-let article = document.createElement('article');
-async function output(section) {
-      document.body.appendChild(sections);
-      let nameElement = document.createElement('tr');
-      nameElement.textContent = temple.templeName;
+// let article = document.createElement('article');
+// async function output(section) {
+//       document.body.appendChild(sections);
+//       let nameElement = document.createElement('tr');
+//       nameElement.textContent = temple.templeName;
 
-      article.appendChild(nameElement);
-}
+//       article.appendChild(nameElement);
+// }
 
 //Sorts by category
 function sortBy(){
   reset();
   let sortOut = document.getElementById('sortBy').value;
   switch(sortOut){
-      case "Professional Training":
+    case "communication":
+          console.log('communication');
+    case "complianceTraining":
+          console.log('complianceTraining');
+    case "customerServiceProgram":
+          console.log('Customer Service Program');
+    case "discipleLeadershipProgram":
+          console.log('discipleLeadershipProgram');
+    case "leadershipTraining":
+          console.log('leadershipTraining');
+    case "personalDevelopment":
+          console.log('personalDevelopment');
+    case "professionalTraining":
 
+        count = 0
         for(let i = 0; i < data.options.length; i++){
           if (data.options[i].category == "Professional Training"){
             //Add to output
-            output()
+            count += 1
+            
             
           }
       
         }
-      
-      case "templeNameDescending":
-          console.log("here2");
-          templeList.sort((a, b) => {
-              let temple1 = a.templeName;
-              let temple2 = b.templeName;
-              if (temple1 < temple2){
-                  return -1;
-              } else if (temple1 > temple2){
-                  return 1;
-              } else if (temple1 = temple2){
-                  return 0;
-              }
-          });
-          console.log(templeList);
-          output(templeList);
-          break;
-      default:
-          console.log("here2");
+        console.log(count)
+    case "professionalTraining":
+          console.log('professionalTraining');
+    case "software":
+          console.log('software');                  
+    case "spiritOfRicks":
+          console.log('spiritOfRicks')
+    case "workDay":
+          console.log('workDay');
+    case "other":
+          console.log('other');
+    default:
+          console.log("error");
   }
+}
+//Resets the table
+function reset() {
+  const element = document.getElementById('sections');
+  element.innerHTML = '';
 }
 
 
 getJSON(url);
+
+
+//Listen to dropdown menu change
+document.getElementById('sortBy').addEventListener('change', sortBy);
