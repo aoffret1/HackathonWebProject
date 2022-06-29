@@ -1,13 +1,62 @@
 body {
-  background-color: #ffffbf;
+  background-color: #ffffff;
+  font-style: normal;
+  font-family: sans-serif, arial;
+
+}
+/* BYUI icon */
+
+.BYUI-icon {
+  width: 85px;
+
 }
 
-.header {
-  padding: 60px;
+/* header 1 */
+.header1 {
+  padding: 10px;
   text-align: center;
-  background: #1abc9c;
+  background: #177ac1eb;
   color: white;
-  font-size: 30px;
+  font-size: 18px;
+  height: 1em;
+  /* font-weight: bold; */
+}
+
+.h1-links {
+  text-align: center;
+  font-size: 18px;
+}
+/* Need to adjsut columns position 
+and move image to 1st column */
+.column-h1 {
+  float: right;
+  width: 15%;
+  /* columns: 50px 6; */
+  color: white;
+}
+
+.column-h1:hover {
+  color: white;
+}
+.column-h1:link {
+  text-decoration: none;
+}
+
+/* header 2 */
+.header2 {
+  padding: 35px;
+  text-align: center;
+  background: #d1d4de;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-weight: normal;
+}
+.header3 {
+  padding: 10px;
+  text-align: center;
+  background: #2757d2;
+  color: white;
+  font-size: 18px;
 }
 
 .weather-container {
