@@ -29,7 +29,7 @@ async function getJSON(url) {
 //Creates each row for table
 function sectionTemplate(section){
   return `<tr><td> <a href="${section.link}">${section.name}</a> 
-  </td><td></td></tr>`
+  </td><td>${section.category}</td></tr>`
 }
 
 //Makes table
