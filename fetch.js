@@ -1,22 +1,24 @@
 const url = "trainings.json";
+
+//global value of array of trainings
+let trainingsArray = [];
+
 const outputElement = document.getElementById('output');
 let results = null;
+
+//Obtains the information from the json file.
 async function getJSON(url) {
   const response = await fetch(url);
   //check to see if the fetch was successful
   if (response.ok) {
-    // the API will send us JSON...but we have to convert the response before we can use it
-    // .json() also returns a promise...so we await it as well.
     console.log('here');
     const data = await response.json();
 
     //Loop and print each part of the array.
-    tableCreator(data.options)
-
-    /*for(let i = 0; i < data.options.length; i++){
-      console.log(data.options[i].name)
-      doStuff(data.options[i])
-    }*/
+    trainingsArray = data.options;
+    tableCreator(trainingsArray)
+    
+    
 
   }
 }
@@ -36,61 +38,66 @@ function tableCreator(sections){
   const htmlString = htmlStrings.join('');
   //console.log(htmlString);
   element.innerHTML = htmlString;
+
+
 }
 
-//Appends elements
-// let article = document.createElement('article');
-// async function output(section) {
-//       document.body.appendChild(sections);
-//       let nameElement = document.createElement('tr');
-//       nameElement.textContent = temple.templeName;
-
-//       article.appendChild(nameElement);
-// }
 
 //Sorts by category
 function sortBy(){
   reset();
   let sortOut = document.getElementById('sortBy').value;
+  categoryList = []
+  compare_value = ''
+  //Which category will be filtered. It adds each matching training
+  // objects to a seperate array that will be printed on the table.
   switch(sortOut){
     case "communication":
-          console.log('communication');
+      compare_value = 'Communication';
+      break;
     case "complianceTraining":
-          console.log('complianceTraining');
+      compare_value = 'Compliance Training';
+      break;
     case "customerServiceProgram":
-          console.log('Customer Service Program');
+      compare_value = 'Customer Service Program';
+      break;
     case "discipleLeadershipProgram":
-          console.log('discipleLeadershipProgram');
+      compare_value = 'Disciple Leadership Program';
+      break;
     case "leadershipTraining":
-          console.log('leadershipTraining');
+      compare_value = 'Leadership Training';
+      break;
     case "personalDevelopment":
-          console.log('personalDevelopment');
+      compare_value = 'Personal Development';
+      break;
     case "professionalTraining":
-
-        count = 0
-        for(let i = 0; i < data.options.length; i++){
-          if (data.options[i].category == "Professional Training"){
-            //Add to output
-            count += 1
-            
-            
-          }
-      
-        }
-        console.log(count)
-    case "professionalTraining":
-          console.log('professionalTraining');
+      compare_value = 'Professional Training';
+      break;
     case "software":
-          console.log('software');                  
+      compare_value = 'Software';
+        break;           
     case "spiritOfRicks":
-          console.log('spiritOfRicks')
+      compare_value = 'Spirit of Ricks';
+      break;
     case "workDay":
-          console.log('workDay');
+      compare_value = 'Workday Learning System';
+      break;
     case "other":
-          console.log('other');
+      compare_value = 'Other';
+      break;
     default:
-          console.log("error");
+      console.log("error");
   }
+
+  //Adds to seperate list, and prints it out
+  for(let i = 0; i < trainingsArray.length; i++){
+    if (trainingsArray[i].category == compare_value){
+      //Add to categoryList.
+      categoryList.push(trainingsArray[i])
+    }
+
+  }
+  tableCreator(categoryList);
 }
 //Resets the table
 function reset() {
